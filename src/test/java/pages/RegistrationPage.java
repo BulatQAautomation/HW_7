@@ -2,7 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
@@ -14,19 +14,18 @@ public class RegistrationPage {
             subjectsInput = $("#subjectsInput"),
             uploadPictureButton = $("#uploadPicture"),
             currentAddressInput = $("#currentAddress"),
-            userGender = $("[for='gender-radio-1']"),
-            userHobbiesFirstCheckBox = $("[for='hobbies-checkbox-2']"),
-            userHobbiesSecondCheckBox = $("[for='hobbies-checkbox-3']"),
+            userGender = $("#genterWrapper"),
+            userHobbiesCheckBox = $("#hobbiesWrapper"),
             submitButton = $("#submit"),
-            resultsTable = $(".table-responsive"),
             dateOfBirth = $("#dateOfBirthInput"),
             monthOfBirth = $(".react-datepicker__month-select"),
             datePicker = $(".react-datepicker__year-select"),
-            birthChoose = $("[aria-label = 'Choose Wednesday, December 9th, 1992']"),
+            birthChoose = $(".react-datepicker__month:not(.react-datepicker__day--outside-month)"),
             stateButton = $("#state"),
             stateInput = $("#state input"),
             cityButton = $("#city"),
-            cityInput = $("#city input");
+            cityInput = $("#city input"),
+            table = $(".table-responsive");
 
 
     public RegistrationPage openPage() {
@@ -71,14 +70,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender() {
-        userGender.click();
+    public RegistrationPage setGender(String value) {
+        userGender.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage setHobbies() {
-        userHobbiesFirstCheckBox.click();
-        userHobbiesSecondCheckBox.click();
+    public RegistrationPage setHobbies(String value) {
+        userHobbiesCheckBox.click();
         return this;
     }
 
@@ -86,15 +84,4 @@ public class RegistrationPage {
         submitButton.click();
         return this;
     }
-
-    public void checkResult() {
-        resultsTable.shouldHave(text("Male"));
-        resultsTable.shouldHave(text("09 December,1992"));
-        resultsTable.shouldHave(text("Maths"));
-        resultsTable.shouldHave(text("Reading, Music"));
-        resultsTable.shouldHave(text("example.jpg"));
-        resultsTable.shouldHave(text("Haryana Karnal"));
-    }
-
-
 }
