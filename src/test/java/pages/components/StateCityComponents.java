@@ -1,12 +1,12 @@
 package pages.components;
 
-import static com.codeborne.selenide.Selenide.$;
+import pages.RegistrationPage;
 
-public class StateCityComponents {
+public class StateCityComponents extends RegistrationPage {
     public void setStateCity(String state, String city) {
-        $("#state").click();
-        $("#state input").setValue(state).pressEnter();
-        $("#city").click();
-        $("#city input").setValue(city).pressEnter();
+        stateButton.click();
+        stateInput.setValue(state).pressEnter();
+        cityButton.click();
+        cityInput.setValue(city).pressEnter();
     }
 }
