@@ -36,7 +36,7 @@ public class DemoQATests extends TestBase {
                 .checkResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
                 .checkResult("Subjects", testData.subjects)
                 .checkResult("Hobbies", testData.hobbies)
-                .checkResult("Picture", "example.jpg")
+                .checkResult("Picture", testData.pictureName)
                 .checkResult("Address", testData.adress)
                 .checkResult("State and City", testData.state + " " + testData.city);
     }

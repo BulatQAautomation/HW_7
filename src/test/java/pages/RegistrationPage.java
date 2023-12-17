@@ -76,7 +76,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobbies(String value) {
-        userHobbiesCheckBox.click();
+        userHobbiesCheckBox.$(byText(value)).click();
         return this;
     }
 
